@@ -1,0 +1,284 @@
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    background: linear-gradient(270deg, #f8f6f2, #ece8e1, #f8f6f2);
+    background-size: 600% 600%;
+    animation: bgMove 16s ease infinite;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================= SCENES ================= */
+.scene {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+    backdrop-filter: blur(8px);
+}
+
+.scene.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+    z-index: 1;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: rgba(255,255,255,0.95);
+    padding: 50px;
+    border-radius: 22px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+    text-align: center;
+    max-width: 520px;
+    width: 90%;
+    backdrop-filter: blur(6px);
+}
+
+/* ================= TYPOGRAPHY ================= */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #6b6b6b;
+    min-height: 70px;
+    line-height: 1.6;
+}
+
+/* ================= BUTTONS ================= */
+button {
+    margin-top: 20px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    border: none;
+    background: #6b705c;
+    color: white;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.no {
+    background: #e0ddd7;
+    color: #555;
+    position: absolute;
+}
+
+/* ================= ENVELOPE ================= */
+.envelope {
+    width: 120px;
+    height: 80px;
+    background: #6b705c;
+    margin: 0 auto 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.05);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-top: 40px solid #4f5443;
+}
+
+/* ================= CHARACTERS ================= */
+.characters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.character {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #f1d0b5;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+/* Eyes */
+.character::before,
+.character::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #333;
+    position: absolute;
+    top: 25px;
+    border-radius: 50%;
+}
+
+.character::before { left: 18px; }
+.character::after { right: 18px; }
+
+/* Mouth base */
+.character .mouth {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Expressions */
+.character.sad::after {
+    content: "";
+    width: 30px;
+    height: 12px;
+    background: #333;
+    border-radius: 0 0 30px 30px;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.character.happy::after {
+    content: "";
+    width: 30px;
+    height: 12px;
+    background: #333;
+    border-radius: 30px 30px 0 0;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.character.shocked::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ================= CHAT ================= */
+.chat {
+    text-align: left;
+    margin-top: 15px;
+}
+
+.msg {
+    padding: 10px 14px;
+    border-radius: 14px;
+    margin: 6px 0;
+    max-width: 70%;
+    font-size: 0.9rem;
+}
+
+.her {
+    background: #ece8e1;
+}
+
+/* ================= HEARTS ================= */
+.heart {
+    position: fixed;
+    font-size: 18px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* ================= LILIES ================= */
+#lily-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.lily {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+/* Petal structure */
+.lily::before,
+.lily::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    background: crimson;
+    border-radius: 10px;
+    top: 8px;
+}
+
+.lily::before {
+    transform: rotate(45deg);
+}
+
+.lily::after {
+    transform: rotate(-45deg);
+}
+
+.lily span {
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    background: crimson;
+    border-radius: 10px;
+    top: 8px;
+    transform: rotate(90deg);
+}
+
+/* Glow effect */
+.lily::before,
+.lily::after,
+.lily span {
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.4);
+}
+
+/* Depth layers */
+.lily.small {
+    transform: scale(0.6);
+    opacity: 0.5;
+    filter: blur(1px);
+}
+
+.lily.large {
+    transform: scale(1.4);
+    opacity: 0.9;
+}
+
+/* ================= UTIL ================= */
+.hidden {
+    display: none;
+}
