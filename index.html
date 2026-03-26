@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Jona</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- 🌺 Red Spider Lilies Background -->
+<div id="lily-container"></div>
+
+<!-- 🎬 SCENE 1: INTRO -->
+<div class="scene active" id="scene1">
+    <div class="card">
+        <div class="envelope" onclick="goToScene(2)"></div>
+        <h1>For Jona</h1>
+        <p>This might be worth opening.</p>
+    </div>
+</div>
+
+<!-- 🎞️ SCENE 2: MEMORY -->
+<div class="scene" id="scene2">
+    <div class="card">
+        <h1>Before I say anything...</h1>
+        <p id="memoryText"></p>
+
+        <button onclick="nextMemory()">continue</button>
+    </div>
+</div>
+
+<!-- 💬 SCENE 3: CHAT -->
+<div class="scene" id="scene3">
+    <div class="card">
+        <h1>And then I did this...</h1>
+
+        <div id="chat" class="chat"></div>
+
+        <button onclick="goToScene(4)">continue</button>
+    </div>
+</div>
+
+<!-- 🎭 SCENE 4: APOLOGY -->
+<div class="scene" id="scene4">
+    <div class="card">
+
+        <!-- Characters -->
+        <div class="characters">
+            <div id="me" class="character sad"></div>
+            <div id="her" class="character sad"></div>
+        </div>
+
+        <h1 id="title">Okay...</h1>
+        <p id="text"></p>
+
+        <button onclick="nextStep()">continue</button>
+    </div>
+</div>
+
+<!-- 💖 SCENE 5: FINAL -->
+<div class="scene" id="scene5">
+    <div class="card">
+        <h1>Can I fix it, Jona?</h1>
+
+        <button onclick="forgive()">okay… fine</button>
+        <button class="no" id="noBtn" onmouseover="moveNo()">no</button>
+
+        <p id="final" class="hidden"></p>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+
+</body>
+</html>
